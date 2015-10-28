@@ -1,0 +1,10 @@
+{
+	"name": "Quick-Setup",
+	"version":"0.0.1",
+	"description":"superfast setup",
+	"main": "server.js",
+	"dependencies": {
+		"express":"~4.10.2",
+		"path":"*"
+	}
+}
