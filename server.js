@@ -3,7 +3,6 @@ var app = express();
 var http = require('http').Server(app);
 var bodyParser = require('body-parser');
 var fs = require("fs");
-var exec = require('child_process').exec;
 app.use(express.static(process.cwd() + '/html'));
 app.use(bodyParser.json());
 app.all("/test",function(req,res){
