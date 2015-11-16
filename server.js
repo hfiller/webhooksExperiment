@@ -6,8 +6,9 @@ var fs = require("fs");
 app.use(express.static(process.cwd() + '/html'));
 app.use(bodyParser.json());
 app.all("/test",function(req,res){
-	if(existingRepos.hasOwnProperty(req.body.repository.name)){
-		console.log("success");
+	if(!existingRepos.hasOwnProperty(req.body.repository.id)){
+		existingRepos[req.body.repository.id] = req.body.repository;
+		fs.writeFile("repos.json",JSON.stringify(existingRepos));
 	}
 	console.log(req.body.repository);
 	res.end();
