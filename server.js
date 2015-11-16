@@ -2,12 +2,19 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var bodyParser = require('body-parser');
+var fs = require("fs");
 app.use(express.static(process.cwd() + '/html'));
 app.use(bodyParser.json());
 app.all("/test",function(req,res){
-	console.log(req.body);
+	if(existingRepos.hasOwnProperty(req.body.repository.name)){
+		console.log("success");
+	}
+	console.log(req.body.repository);
 	res.end();
 });
+
+var existingRepos = JSON.parse(fs.readFileSync("repos.json"));
+
 var port = 1337;
 http.listen(port,function(){ console.log('listening on port ' + port);});
 
